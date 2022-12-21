@@ -21,8 +21,7 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 {
 	char *ptr = NULL, **tokens = NULL, **env_cpy;
 	size_t n = 0;
-	int i; 
-	int j = 0;
+	int i;
 
 	(void)av;
 	while (1)
@@ -38,7 +37,7 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 		if (getline(&ptr, &n, stdin) == EOF)
 		{
 			free(ptr);
-			exit(-1);
+			exit(0);
 		}
 		tokens = tokenization(ptr, " \n");
 		free(ptr);

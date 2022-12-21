@@ -2,7 +2,7 @@
 
 int execution(char **tokens,  char **env)
 {
-    int status, i, j = 0;
+    int status;
     pid_t child_pid;
     char *path_tok, **cmd, **env_cpy;
     struct stat buffer;
