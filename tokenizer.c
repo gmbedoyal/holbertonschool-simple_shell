@@ -19,8 +19,7 @@ char **tokenization(char *str, char *delim)
 	char *tokenizer = NULL, **tokens = NULL;
 	int i = 0;
 
-	tokens = malloc(sizeof(char *) * 10);
-	
+	tokens = malloc(sizeof(char *) * 10);	
 	if (tokens == NULL)
 		return (NULL);
 

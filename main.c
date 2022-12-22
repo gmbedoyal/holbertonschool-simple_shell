@@ -62,6 +62,7 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 			free(tokens);
 	}
 	free_array(tokens);
+	free_array(env_cpy);
 	free(buf);
 	return (0);
 }

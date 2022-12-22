@@ -16,6 +16,9 @@ char **envcopy(char** env)
         i++;
 
     env_cpy = malloc(sizeof(char *) * i);
+    if (env_cpy == NULL)
+        return (NULL);
+        
 	for (i = 0; env[i]; i++)
         env_cpy[i] = strdup(env[i]);
 	env_cpy[i] = NULL;

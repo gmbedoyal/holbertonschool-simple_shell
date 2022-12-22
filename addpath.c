@@ -9,12 +9,12 @@ char *add_path(char **tokens, char **path_tok)
 {
 	char *cmd;
 	int i = 0;
-	struct stat stat_buf;
+	struct stat st;
 
 	while (path_tok[i])
 	{
 		cmd = _strcat(path_tok[i], tokens[0]);
-		if (stat(cmd, &stat_buf) == 0)
+		if (stat(cmd, &st) == 0)
 		{
 			tokens[0] = cmd;
 			break;
