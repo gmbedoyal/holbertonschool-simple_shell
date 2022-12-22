@@ -21,7 +21,8 @@ char **envcopy(char** env)
         
     for (i = 0; env[i]; i++)
         env_cpy[i] = strdup(env[i]);
-	env_cpy[i] = NULL;
+	
+    env_cpy[i] = NULL;
 
     return(env_cpy);
 }
