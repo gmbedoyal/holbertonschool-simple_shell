@@ -19,32 +19,30 @@
  */
 int main(int ac __attribute__((unused)), char **av,  char **env)
 {
-	char *ptr = NULL, **tokens = NULL, **env_cpy;
+	char *buf = NULL, **tokens = NULL, **env_cpy;
 	size_t n = 0;
-	int i;
-
+	int i = 0;
 	(void)av;
+
 	while (1)
 	{
 		tokens = NULL;
-		ptr = NULL;
+		buf = NULL;
 		n = 0;
 		if (isatty(0))
-			write(1, "$ ", 2);
+			printf("$ ");
 		
 		signal(SIGINT, sigfunc);
 
-		if (getline(&ptr, &n, stdin) == EOF)
+		if (getline(&buf, &n, stdin) == EOF)
 		{
-			free(ptr);
+			free(buf);
 			exit(0);
 		}
-		tokens = tokenization(ptr, " \n");
-		free(ptr);
+		tokens = tokenization(buf, " \n");
+		free(buf);
 
 		env_cpy = envcopy(env);
-		
-		i = 0;
 
 		if (tokens[0] != NULL)
 		{
@@ -52,8 +50,7 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 			{
 				for (i = 0; env_cpy[i]; i++)
 				{
-					write(1, env_cpy[i], _strlen(env_cpy[i]));
-					write(1, "\n", 1);
+					printf("%s\n", env_cpy[i]);
 				}
 				free_array(tokens);
 				continue;
@@ -65,7 +62,7 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 			free(tokens);
 	}
 	free_array(tokens);
-	free(ptr);
+	free(buf);
 	return (0);
 }
 

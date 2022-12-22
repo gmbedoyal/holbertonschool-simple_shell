@@ -5,21 +5,21 @@ int execution(char **tokens,  char **env)
     int status;
     pid_t child_pid;
     char *path_tok, **cmd, **env_cpy;
-    struct stat buffer;
+    struct stat st;
 
     env_cpy = envcopy(env);
 
-    if (stat(tokens[0], &buffer) != 0)
+    if (stat(tokens[0], &st) != 0)
     {
         path_tok = path(env_cpy);
         cmd = tokenization(path_tok, ":");
         free(path_tok);
         tokens[0] = add_path(tokens, cmd);
-        if (stat(tokens[0], &buffer) != 0)
+        if (stat(tokens[0], &st) != 0)
         {
             free_array(cmd);
             free_array(tokens);
-            perror("cmd not found");
+            perror("command not found");
             return (0);
         }
     }
