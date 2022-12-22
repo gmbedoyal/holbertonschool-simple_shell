@@ -2,18 +2,18 @@
 /**
  * add_path - Concatenates the path with the command given by user
  * @tokens: command given by user
- * @path_tok: current path
+ * @paths: current path
  * Return: the path concatenated in position 0 of the array.
  */
-char *add_path(char **tokens, char **path_tok)
+char *add_path(char **tokens, char **paths)
 {
 	char *cmd;
 	int i = 0;
 	struct stat st;
 
-	while (path_tok[i])
+	while (paths[i])
 	{
-		cmd = _strcat(path_tok[i], tokens[0]);
+		cmd = _strcat(paths[i], tokens[0]);
 		if (stat(cmd, &st) == 0)
 		{
 			tokens[0] = cmd;

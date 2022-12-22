@@ -11,16 +11,16 @@ int execution(char **tokens,  char **env)
 {
 	int status;
 	pid_t child_pid;
-	char *path_tok, **cmd, **env_cpy;
+	char *get_path, **cmd, **env_cpy;
 	struct stat st;
 
 	env_cpy = envcopy(env); /*create a copy of local environment*/
 
-	if (stat(tokens[0], &st) != 0) /*checks existence of path*/
+	if (stat(tokens[0], &st) != 0) /*checks existence of command*/
 	{
-		path_tok = path(env_cpy); /*gets path from env*/
-		cmd = tokenization(path_tok, ":"); /*tokenizes paths on PATH*/
-		free(path_tok);
+		get_path = path(env_cpy); /*gets PATH from env*/
+		cmd = tokenization(get_path, ":"); /*tokenizes paths on PATH*/
+		free(get_path);
 		tokens[0] = add_path(tokens, cmd); /*adds command to path*/
 		if (stat(tokens[0], &st) != 0) /*checks if command doesn't exists*/
 		{
