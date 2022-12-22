@@ -1,8 +1,9 @@
 #include "simple_shell.h"
+
 /**
- * free_array - function to free a array
- * @tokens: array to be free
- * Return: Theres no return. (void)
+ * free_array - frees an array
+ * @tokens: array to be freed
+ * Return: no return
  */
 void free_array(char **tokens)
 {

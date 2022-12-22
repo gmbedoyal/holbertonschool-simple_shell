@@ -1,8 +1,8 @@
 #include "simple_shell.h"
 /**
- * add_path - this functions concatenates the path with the cmd
- * @tokens: the cmd the person introduces
- * @path_tok: the path
+ * add_path - Concatenates the path with the command given by user
+ * @tokens: command given by user
+ * @path_tok: current path
  * Return: the path concatenated in position 0 of the array.
  */
 char *add_path(char **tokens, char **path_tok)

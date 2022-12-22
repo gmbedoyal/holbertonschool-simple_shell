@@ -1,45 +1,40 @@
 #include "simple_shell.h"
 /**
- * _strcmp - compare two strings
- *
- * @comparing: source string
- * @compare: string to be compare againt source.
- *
- * Return: 0 if its equal, otherwise is not equal.
+ * _strcmp - compare two strings, position by position
+ * @str1: source string
+ * @str2: string to be compared againt str1
+ * Return: 0 if strings arre equal, another value if not equal
  */
-int _strcmp(char *comparing, char *compare)
+int _strcmp(char *str1, char *str2)
 {
-	while (*comparing == *compare)
+	while (*str1 == *str2)
 	{
-		if (*comparing == '\0')
+		if (*str1 == '\0')
 			return (0);
-		comparing++;
-		compare++;
+		str1++;
+		str2++;
 	}
-	return (*comparing - *compare);
+	return (*str1 - *str2);
 }
 
-#include "simple_shell.h"
 /**
- * _strncmp - Compares two strings with n size
- *
- * @compare: Given String 1
- * @comparing: Given String 2
- * @n: Size to character compare
- *
- * Return: 0 both strings are equals
+ * _strncmp - Compares two strings up to n size
+ * @str1: source string
+ * @str2: string to be compared againt str1
+ * @n: number of positions to compare starting 0
+ * Return: 0 if strings arre equal, another value if not equal
 */
-int _strncmp(char *compare,  char *comparing, size_t n)
+int _strncmp(char *str2,  char *str1, size_t n)
 {
-	while (n && *compare && (*compare == *comparing))
+	while (n && *str2 && (*str2 == *str1))
 	{
-		++compare;
-		++comparing;
+		++str2;
+		++str1;
 		--n;
 	}
 
 	if (n == 0)
 		return (0);
 	else
-		return (*(unsigned char *)compare - *(unsigned char *)comparing);
+		return (*(unsigned char *)str2 - *(unsigned char *)str1);
 }

@@ -1,21 +1,16 @@
 #include "simple_shell.h"
 /**
- * main - it run our infiite loop for the shell
- *
+ * main - main function of shell.
+ * Description - on an infinite loop, first we check for interactive mode
+ * and print the prompt. Second, we call the signal function to operate
+ * "ctrl + c" option. Third, we receive the command line from user and
+ * tokenize it. Fourth, we create a copy of the local environment.
+ * Fith, we check for env and exit commands. Sixth, we execute the given
+ * command. And lastly, we free memory and return 0.
  * @ac: argument count
  * @av: argument vector
- * @env: enviorment
- *
+ * @env: local environment
  * Return: always return 0.
- *
- * Description: This program runs in a infinite loop. Inside this loop we
- * checked it we are in interactive mode, if so we print the prompt. Then
- * we processed to get the command inputed by the user. That input is cross
- * checked to see if they press the Ctrl-d command. If of the program will
- * print a new line and exit. Otherwise it will checke it the input is a new
- * line (the user just pressed enter), if so she will print the prompt.
- * Afterwards we tokenize the command, then we check if its a built-in
- * otherwise we execute the commmand, and then free for next use.
  */
 int main(int ac __attribute__((unused)), char **av,  char **env)
 {
@@ -31,7 +26,7 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 		n = 0;
 		if (isatty(0))
 			printf("$ ");
-		
+
 		signal(SIGINT, sigfunc);
 
 		if (getline(&buf, &n, stdin) == EOF)
@@ -55,7 +50,7 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 				free_array(tokens);
 				continue;
 			}
-			if (die(tokens) == 1)
+			if (isexit(tokens) == 1)
 				execution(tokens, env);
 		}
 		else
@@ -68,13 +63,11 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 }
 
 /**
- * die - function that will check if tokens 0 is the word exit
- *
- * @tokens: array of tokens that we will checked only the first token
- *
- * Return: 1, if the word is not exit, or 0 if it exit
+ * isexit - check if command exit is typed in
+ * @tokens: array of tokens where command is stored
+ * Return: 1 if the word is not exit, or 0 if it's exit
  */
-int die(char **tokens)
+int isexit(char **tokens)
 {
 	if (_strcmp(tokens[0], "exit") == 0)
 	{
@@ -85,15 +78,12 @@ int die(char **tokens)
 }
 
 /**
-  * sigfunc - func for ctrl + c
-  *
+  * sigfunc - function to operate for ctrl + c
   * @signal: signal received of main
-  *
-  * Return: void
+  * Return: no return
   */
 void sigfunc(int signal)
 {
-
-    (void) signal;
-    write(STDIN_FILENO, "\n$ ", 3);
+	(void) signal;
+	write(STDIN_FILENO, "\n$ ", 3);
 }

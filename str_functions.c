@@ -1,13 +1,11 @@
 #include "simple_shell.h"
 /**
  * _strcpy - Copies the string pointed to by src
- * including the terminating null byte(\0), to the buffer
- * pointer to by dest.
- *
+ * including the terminating null byte(\0), to the string
+ * pointed to by dest.
  * @dest: destination
  * @src: source
- *
- * Return: Return the value of the pointer dest
+ * Return: dest string
  */
 char *_strcpy(char *dest, char *src)
 {
@@ -25,16 +23,13 @@ char *_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-#include "simple_shell.h"
 /**
- * _strcat - This function appendes the src to the dest string,
- * overwritingh the termination null byte at the end of dest,
+ * _strcat - Concatenates the src to the dest string,
+ * overwriting the termination null byte at the end of dest,
  * and then adds a termination null byte.
- *
- * @dest: original
- * @src: to be added to dest
- *
- * Return: a pointer to the resulting string of dest.
+ * @dest: destination
+ * @src: source
+ * Return: dest string
  */
 char *_strcat(char *dest, char *src)
 {
@@ -60,28 +55,24 @@ char *_strcat(char *dest, char *src)
 	return (dest);
 }
 
-#include "simple_shell.h"
 /**
- * _strlen - Return the lenght of a string
- *
- * @s: charater pointer
- *
+ * _strlen - Returns the lenght of a string
+ * @s: string to be measured
  * Return: the lenght of the string
  */
 int _strlen(char *s)
 {
 	int lenght;
 
-	for (lenght = 0; s[lenght] != '\0'; lenght++)
-		;
+	while (s[lenght] != '\0')
+		lenght++;
 
 	return (lenght);
 }
 
-#include "simple_shell.h"
 /**
- * _strdup - Duplicates a given string
- * @s: given string
+ * _strdup - Duplicates a string
+ * @s: string to duplicate
  * Return: Copy of given string
 */
 char *_strdup(char *s)
@@ -95,7 +86,6 @@ char *_strdup(char *s)
 	len = _strlen(s);
 
 	ptr = malloc(sizeof(char) * (len + 1));
-
 	if (ptr == NULL)
 		return (NULL);
 
