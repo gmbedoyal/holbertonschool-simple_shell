@@ -10,7 +10,7 @@ char **tokenization(char *str, char *delim)
 	char *tokenizer = NULL, **tokens = NULL;
 	int i = 0;
 
-	tokens = malloc(sizeof(char *) * 10);
+	tokens = calloc(sizeof(char *), 10);
 	if (tokens == NULL)
 		return (NULL);
 
@@ -18,7 +18,7 @@ char **tokenization(char *str, char *delim)
 
 	while (tokenizer)
 	{
-		tokens[i] = malloc(sizeof(char) * _strlen(tokenizer) + 1);
+		tokens[i] = calloc(sizeof(char), _strlen(tokenizer) + 1);
 		_strcpy(tokens[i], tokenizer);
 		i++;
 		tokenizer = NULL;

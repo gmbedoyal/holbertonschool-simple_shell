@@ -15,7 +15,7 @@ char **envcopy(char **env)
 	while (env[i])
 		i++;
 
-	env_cpy = malloc(sizeof(char *) * i);
+	env_cpy = calloc(sizeof(char *), i);
 	if (env_cpy == NULL)
 		return (NULL);
 
