@@ -13,7 +13,7 @@ This git contains a simple shell created for C. This shell has the following cha
 
 ## Flowchart
 
-<img src= "https://imgur.com/a/j8h2yHM">
+<img src= "https://i.imgur.com/WX9vuk9.jpeg">
 
 ## Installation
 
