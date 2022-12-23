@@ -1,0 +1,18 @@
+.\" Manpage for Simple_Shell.
+.\" Contact gmbedoyal@gmail.com to correct errors or typos.
+.TH man 8 "23 dic 2022" "1.0" "Simple_shell man page"
+.SH NAME
+Simple_shell \- runs a simple shell 
+.SH SYNOPSIS
+$ [type command and arguments (optional) as on any shell]
+.SH DESCRIPTION
+This shell receives basic commands from the command line and executes them. It handles built-in commands like 'exit' or 'env' and it also executes commands stored in the local PATH. This shell runs on 7 functions: (1) sigfunc - for handling the 'ctrl+c' command (2) envcopy - to make a copy of the local environment (3) isexit - to execute the exit command if entered by user (4) tokenization - for parsing what is written on the command line into an array of strings (5) execution - to check if function exists on local environment and execute it (6) path - to get the directories of the PATH variable (7) add_path to concatenate the command typed in to the directory of the path. For a better understanding of this shell, please refer to the README.md file.
+.SH OPTIONS
+This shell works both on interactive (typing commands on the command line) or not-interactive mode (giving commands through a pipe).
+.SH SEE ALSO
+sh, bash, zsh.
+.SH BUGS
+Sometimes the command 'touch' doesn't work. Memmory optimization pending.
+.SH AUTHOR
+Miguel Bedoya - gmbedoyal@gmail.com
+Juan Eduardo Gómez - 

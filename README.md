@@ -1,9 +1,9 @@
 # Holberton School - Simple Shell Project README
 
 
-This git contains a simple shell created for C. This shell has the following characteristics:
+This git contains a simple shell. This shell has the following characteristics:
 
--   It dsplay a prompt and wait for the user to type a command. A command line always ends with a new line.
+-   It display a prompt and wait for the user to type a command. A command line always ends with a new line.
 -   The prompt is displayed again each time a command has been executed.
 -   The command lines are simple, it doesn't support semicolons, nor pipes, nor redirections or any other advanced features.
 -   It handles command lines with arguments passed to programs.
