@@ -16,7 +16,7 @@ char *add_path(char **tokens, char **path_tok);
 int isexit(char **tokens);
 void sigfunc(int signal);
 char **envcopy(char **env);
-int is_env(char **tokens, char **env_cpy);
+int is_env(char **tokens, char **env);
 
 /* Auxiliar Functions*/
 int _strlen(char *s);

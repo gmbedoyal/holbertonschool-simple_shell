@@ -7,16 +7,20 @@
  * Return: 1 if the word is not exit, or 0 if it's exit
  */
 
-int is_env(char **tokens, char **env_cpy)
+int is_env(char **tokens, char **env)
 {
 int i;
+char **env_cpy;
+
+env_cpy = envcopy(env);
+
 if (_strcmp(tokens[0], "env") == 0)
 {
 	for (i = 0; env_cpy[i]; i++)
 		printf("%s\n", env_cpy[i]);
 }
 if (isexit(tokens) == 1)
-	execution(tokens, env_cpy);
+	execution(tokens, env);
 return (0);
 }
 

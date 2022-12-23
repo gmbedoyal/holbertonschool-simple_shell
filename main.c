@@ -12,18 +12,17 @@
  * @env: local environment
  * Return: always return 0.
  */
-int main(int ac __attribute__((unused)), char **av,  char **env)
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)),  char **env)
 {
-	char *buf = NULL, **tokens = NULL, **env_cpy;
+	char *buf = NULL, **tokens = NULL;
 	size_t n = 0;
-	(void)av;
 
 	while (1)
 	{
 		tokens = NULL;
 		buf = NULL;
 		n = 0;
-		if (isatty(0))
+		if (isatty(STDIN_FILENO))
 			printf("$ ");
 
 		signal(SIGINT, sigfunc);
@@ -36,20 +35,17 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 		tokens = tokenization(buf, " \n");
 		free(buf);
 
-		env_cpy = envcopy(env);
-
 		if (tokens[0] != NULL)
-			is_env(tokens, env_cpy);
+			is_env(tokens, env);
 		else
+			free_array(tokens);
 			free(tokens);
+		free_array(tokens);
+		free(tokens);
+		free(buf);
 	}
-	free_array(tokens);
-	free_array(env_cpy);
-	free(buf);
 	return (0);
 }
-
-
 
 /**
   * sigfunc - function to operate for ctrl + c
