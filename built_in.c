@@ -21,10 +21,10 @@ return (0);
 }
 
 /**
-  * isexit - check if command exit is typed in
-  * @tokens: array of tokens where command is stored
-  * Return: 1 if the word is not exit, or 0 if it's exit
-  * */
+ * isexit - check if command exit is typed in
+ * @tokens: array of tokens where command is stored
+ * Return: 1 if the word is not exit, or 0 if it's exit
+ */
 
 int isexit(char **tokens)
 {
