@@ -16,7 +16,6 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 {
 	char *buf = NULL, **tokens = NULL, **env_cpy;
 	size_t n = 0;
-	int i = 0;
 	(void)av;
 
 	while (1)
@@ -40,19 +39,7 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 		env_cpy = envcopy(env);
 
 		if (tokens[0] != NULL)
-		{
-			if (_strcmp(tokens[0], "env") == 0)
-			{
-				for (i = 0; env_cpy[i]; i++)
-				{
-					printf("%s\n", env_cpy[i]);
-				}
-				free_array(tokens);
-				continue;
-			}
-			if (isexit(tokens) == 1)
-				execution(tokens, env);
-		}
+			is_env(tokens, env_cpy);
 		else
 			free(tokens);
 	}
@@ -62,20 +49,7 @@ int main(int ac __attribute__((unused)), char **av,  char **env)
 	return (0);
 }
 
-/**
- * isexit - check if command exit is typed in
- * @tokens: array of tokens where command is stored
- * Return: 1 if the word is not exit, or 0 if it's exit
- */
-int isexit(char **tokens)
-{
-	if (_strcmp(tokens[0], "exit") == 0)
-	{
-		free_array(tokens);
-		exit(0);
-	}
-	return (1);
-}
+
 
 /**
   * sigfunc - function to operate for ctrl + c
