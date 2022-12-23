@@ -1,8 +1,9 @@
 #include "simple_shell.h"
 
 /**
- * isenv - check if command env is typed in
+ * is_env - check if command env is typed in
  * @tokens: array of tokens where command is stored
+ * @env_cpy: copy of environment
  * Return: 1 if the word is not exit, or 0 if it's exit
  */
 
@@ -19,11 +20,12 @@ if (isexit(tokens) == 1)
 return (0);
 }
 
- /**
- * isexit - check if command exit is typed in
- * @tokens: array of tokens where command is stored
- * Return: 1 if the word is not exit, or 0 if it's exit
- */
+/**
+  * isexit - check if command exit is typed in
+  * @tokens: array of tokens where command is stored
+  * Return: 1 if the word is not exit, or 0 if it's exit
+  * */
+
 int isexit(char **tokens)
 {
 	if (_strcmp(tokens[0], "exit") == 0)
