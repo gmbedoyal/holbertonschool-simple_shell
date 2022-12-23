@@ -21,6 +21,5 @@ char *add_path(char **tokens, char **paths)
 		}
 		i++;
 	}
-
 	return (tokens[0]);
 }
